@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Contact = require('../controllers/contactsController');
+const Contact = require('../models/contact'); // or the correct path to your model
 
 // Get all contacts
 router.get('/', async (req, res) => {
