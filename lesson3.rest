@@ -1,0 +1,26 @@
+### POST - Create a New Contact
+POST http://localhost:8080/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Testy",
+  "lastName": "McTester",
+  "email": "testy@example.com",
+  "favoriteColor": "Green",
+  "birthday": "2000-01-01"
+}
+
+### PUT - Update Existing Contact
+PUT http://localhost:8080/contacts/6822bf1f6ccfb52f2f847be4
+Content-Type: application/json
+
+{
+  "firstName": "Updated",
+  "lastName": "Contact",
+  "email": "updated@example.com",
+  "favoriteColor": "Red",
+  "birthday": "1999-12-31"
+}
+
+### DELETE - Delete Contact
+DELETE http://localhost:8080/contacts/6822bf1f6ccfb52f2f847be4
