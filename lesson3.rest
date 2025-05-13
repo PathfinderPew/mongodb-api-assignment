@@ -1,26 +1,26 @@
-### POST - Create a New Contact
-POST http://localhost:8080/contacts
+### ✅ POST - Create a Contact (Render)
+POST https://mongodb-api-assignment.onrender.com/contacts
 Content-Type: application/json
 
 {
-  "firstName": "Testy",
+  "firstName": "Render",
   "lastName": "McTester",
-  "email": "testy@example.com",
-  "favoriteColor": "Green",
-  "birthday": "2000-01-01"
+  "email": "render@example.com",
+  "favoriteColor": "Orange",
+  "birthday": "2002-02-02"
 }
 
-### PUT - Update Existing Contact
-PUT http://localhost:8080/contacts/6822bf1f6ccfb52f2f847be4
+### ✅ PUT - Update Contact (Render)
+PUT https://mongodb-api-assignment.onrender.com/contacts/6822bf1f6ccfb52f2f847be4
 Content-Type: application/json
 
 {
-  "firstName": "Updated",
+  "firstName": "Updated Render",
   "lastName": "Contact",
-  "email": "updated@example.com",
-  "favoriteColor": "Red",
-  "birthday": "1999-12-31"
+  "email": "updated.render@example.com",
+  "favoriteColor": "Purple",
+  "birthday": "1990-10-10"
 }
 
-### DELETE - Delete Contact
-DELETE http://localhost:8080/contacts/6822bf1f6ccfb52f2f847be4
+### ✅ DELETE - Delete Contact (Render)
+DELETE https://mongodb-api-assignment.onrender.com/contacts/6822bf1f6ccfb52f2f847be4
