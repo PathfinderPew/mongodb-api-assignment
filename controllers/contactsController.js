@@ -1,6 +1,19 @@
 const Contact = require('../models/Contact');
+const Joi = require('joi');
+
+// Validation schema
+const contactSchema = Joi.object({
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
+  email: Joi.string().email().required(),
+  favoriteColor: Joi.string().required(),
+  birthday: Joi.string().required()
+});
 
 exports.createContact = async (req, res) => {
+  const { error } = contactSchema.validate(req.body);
+  if (error) return res.status(400).json({ error: error.details[0].message });
+
   try {
     const contact = await Contact.create(req.body);
     res.status(201).json({ id: contact._id });

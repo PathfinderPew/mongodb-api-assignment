@@ -11,11 +11,11 @@ const options = {
     },
     servers: [
       {
-        url: 'https://mongodb-api-assignment.onrender.com', // your deployed URL
+        url: 'https://mongodb-api-assignment.onrender.com', // deployed URL
       }
     ],
   },
-  apis: ['./routes/*.js'], // This points to your route files for auto-doc generation
+  apis: ['./routes/*.js'], // route files for auto doc generation
 };
 
 const swaggerSpec = swaggerJSDoc(options);

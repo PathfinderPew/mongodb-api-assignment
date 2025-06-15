@@ -1,6 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/contactsController');
+const Contact = require('../models/Contact');
+
+/**
+ * @swagger
+ * /contacts:
+ *   get:
+ *     summary: Get all contacts
+ *     responses:
+ *       200:
+ *         description: A list of contacts
+ */
+router.get('/', async (req, res) => {
+  try {
+    const contacts = await Contact.find();
+    res.json(contacts);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 /**
  * @swagger
