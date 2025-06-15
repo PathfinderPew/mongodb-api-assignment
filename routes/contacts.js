@@ -5,12 +5,39 @@ const Contact = require('../models/Contact');
 
 /**
  * @swagger
+ * tags:
+ *   name: Contacts
+ *   description: Contact management
+ */
+
+/**
+ * @swagger
  * /contacts:
  *   get:
+ *     tags: [Contacts]
  *     summary: Get all contacts
  *     responses:
  *       200:
  *         description: A list of contacts
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   _id:
+ *                     type: string
+ *                   firstName:
+ *                     type: string
+ *                   lastName:
+ *                     type: string
+ *                   email:
+ *                     type: string
+ *                   favoriteColor:
+ *                     type: string
+ *                   birthday:
+ *                     type: string
  */
 router.get('/', async (req, res) => {
   try {
@@ -25,6 +52,7 @@ router.get('/', async (req, res) => {
  * @swagger
  * /contacts:
  *   post:
+ *     tags: [Contacts]
  *     summary: Create a new contact
  *     requestBody:
  *       required: true
@@ -59,6 +87,7 @@ router.post('/', controller.createContact);
  * @swagger
  * /contacts/{id}:
  *   put:
+ *     tags: [Contacts]
  *     summary: Update a contact by ID
  *     parameters:
  *       - in: path
@@ -93,6 +122,7 @@ router.put('/:id', controller.updateContact);
  * @swagger
  * /contacts/{id}:
  *   delete:
+ *     tags: [Contacts]
  *     summary: Delete a contact by ID
  *     parameters:
  *       - in: path
