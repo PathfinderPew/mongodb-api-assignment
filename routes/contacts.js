@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/contactsController');
 const Contact = require('../models/Contact');
+const auth = require('../middleware/auth'); // JWT auth middleware
 
 /**
  * @swagger
@@ -14,6 +15,8 @@ const Contact = require('../models/Contact');
  * @swagger
  * /contacts:
  *   get:
+ *     security:
+ *       - bearerAuth: []
  *     tags: [Contacts]
  *     summary: Get all contacts
  *     responses:
@@ -39,7 +42,7 @@ const Contact = require('../models/Contact');
  *                   birthday:
  *                     type: string
  */
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const contacts = await Contact.find();
     res.json(contacts);
@@ -52,6 +55,8 @@ router.get('/', async (req, res) => {
  * @swagger
  * /contacts:
  *   post:
+ *     security:
+ *       - bearerAuth: []
  *     tags: [Contacts]
  *     summary: Create a new contact
  *     requestBody:
@@ -81,12 +86,14 @@ router.get('/', async (req, res) => {
  *       201:
  *         description: Contact created
  */
-router.post('/', controller.createContact);
+router.post('/', auth, controller.createContact);
 
 /**
  * @swagger
  * /contacts/{id}:
  *   put:
+ *     security:
+ *       - bearerAuth: []
  *     tags: [Contacts]
  *     summary: Update a contact by ID
  *     parameters:
@@ -116,12 +123,14 @@ router.post('/', controller.createContact);
  *       204:
  *         description: Contact updated
  */
-router.put('/:id', controller.updateContact);
+router.put('/:id', auth, controller.updateContact);
 
 /**
  * @swagger
  * /contacts/{id}:
  *   delete:
+ *     security:
+ *       - bearerAuth: []
  *     tags: [Contacts]
  *     summary: Delete a contact by ID
  *     parameters:
@@ -134,6 +143,6 @@ router.put('/:id', controller.updateContact);
  *       200:
  *         description: Contact deleted
  */
-router.delete('/:id', controller.deleteContact);
+router.delete('/:id', auth, controller.deleteContact);
 
 module.exports = router;

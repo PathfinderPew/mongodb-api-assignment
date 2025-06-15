@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+// Middleware
 app.use(express.json());
 
 // MongoDB connection
@@ -13,7 +14,10 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Routes
 const contactsRoutes = require('./routes/contacts');
+const authRoutes = require('./routes/auth');
+
 app.use('/contacts', contactsRoutes);
+app.use('/auth', authRoutes);
 
 // Swagger setup
 const setupSwagger = require('./swagger');
